@@ -48,10 +48,15 @@
             <label for="mensaje" class="form-label">Mensaje</label>
             <input type="text" class="form-control" id="mensaje">
             <br>
-            <button onclick="crearMensaje()" class="btn btn-primary">Crear Mensaje</button>
-            <button onclick="listarMensaje()" class="btn btn-info">Listar Mensaje</button>
-            <button onclick="editarMensaje()" class="btn btn-secondary">Editar Mensaje</button>
-            
+            <div>
+                <button onclick="crearMensaje()" class="btn btn-primary">Crear Mensaje</button>
+                <button onclick="listarMensaje()" class="btn btn-info">Listar Mensaje</button>
+                <button onclick="editarMensaje()" class="btn btn-secondary">Editar Mensaje</button>
+            </div>
+            <br>
+            <div id="detail_mensaje">
+
+            </div>
         </div>
         <div id="list_mensaje" class="contenedor_list">
         </div>

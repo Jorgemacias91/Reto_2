@@ -32,7 +32,7 @@ function pintarRespuesta(items) {
         myTable += "<td>" + items[i].category_id + "</td>";
         myTable += "<td>" + items[i].name + "</td>";
         myTable += "<td> <button onclick='eliminarFinca(" + items[i].id + ")'>Borrar</button>";
-        myTable += "<td><a href='./detalle_finca.html'><button onclick='detalleFinca(" + items[i].id + ")'>ver</button></a></td>";
+        myTable += "<td> <button onclick='detalleFinca(" + items[i].id + ")'>Ver</button>";
         myTable += "</tr>"
     }
     myTable += "</table>"
@@ -124,35 +124,25 @@ function detalleFinca(id) {
         type: "GET",
         dataType: "JSON",
         success: function (respuesta) {
-            console.log(respuesta);
+            console.log("respuesta",respuesta)
             $("#detail_finca").empty();
             pintarDetail(respuesta.items);
             console.log('respuesta',respuesta.items)
         }
-    })
+    });
 }
 
 function pintarDetail(items) {
     console.log('entre al a pintar detalle')
-    let myTable = "<table>";
-    if (items.length > 0) {
-        myTable += "<tr>";
-        myTable += "<th>" + "ID" + "</th>";
-        myTable += "<th>" + "DIRECCIÓN" + "</td>";
-        myTable += "<th>" + "EXTENSIÓN" + "</td>";
-        myTable += "<th>" + "CATEGORIA" + "</td>";
-        myTable += "<th>" + "NOMBRE" + "</td>";
-        myTable += "</tr>"
-    }
-        myTable += "<tr>";
-        myTable += "<td>" + items[i].id + "</td>";
-        myTable += "<td>" + items[i].address + "</td>";
-        myTable += "<td>" + items[i].exension + "</td>";
-        myTable += "<td>" + items[i].category_id + "</td>";
-        myTable += "<td>" + items[i].name + "</td>";
-        myTable += "<td> <button onclick='eliminarFinca(" + items[i].id + ")'>Borrar</button>";
-        myTable += "</tr>"
+    console.log("items id", items[0].id)
 
-    myTable += "</table>"
-    $("#detail_finca").append(myTable);
+           detalle =  "<h4>DETALLES</h4>";
+           detalle += "<p> Id: " + items[0].id + "</p>";
+           detalle += "<p>Dirección: " + items[0].address + "</p>";
+           detalle += "<p>Extensión: " + items[0].exension + "</p>";
+           detalle += "<p>Categoría: " + items[0].category_id + "</p>";
+           detalle += "<p>Nombre: " + items[0].name + "</p>";
+        
+    console.log('mytable', detalle)
+    $("#detail_finca").append(detalle);
 }

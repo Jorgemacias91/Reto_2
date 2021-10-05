@@ -26,6 +26,7 @@ function pintarRespuesta(items) {
         myTable += "<td>" + items[i].id + "</td>";
         myTable += "<td>" + items[i].messagetext + "</td>";
         myTable += "<td> <button onclick='eliminarMensaje(" + items[i].id + ")'>Borrar</button>";
+        myTable += "<td> <button onclick='detalleMensaje(" + items[i].id + ")'>Ver</button>";
         myTable += "</tr>"
     }
     myTable += "</table>"
@@ -95,4 +96,30 @@ function editarMensaje() {
             listarMensaje();
         }
     });
+}
+
+function detalleMensaje(id) {
+    $.ajax({
+        url: "https://g6ec27d31f0870f-db202109251721.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/message/message/" + id,
+        type: "GET",
+        dataType: "JSON",
+        success: function (respuesta) {
+            console.log("respuesta",respuesta)
+            $("#detail_mensaje").empty();
+            pintarDetail(respuesta.items);
+            console.log('respuesta',respuesta.items)
+        }
+    });
+}
+
+function pintarDetail(items) {
+    console.log('entre al a pintar detalle')
+    console.log("items id", items[0].id)
+
+           detalle =  "<h4>DETALLES</h4>";
+           detalle += "<p> Id: " + items[0].id + "</p>";
+           detalle += "<p>Mensaje: " + items[0].messagetext + "</p>";
+        
+    console.log('mytable', detalle)
+    $("#detail_mensaje").append(detalle);
 }
